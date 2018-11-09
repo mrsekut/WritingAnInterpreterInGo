@@ -1,26 +1,67 @@
 package lexer
 
 import (
+	"monkey/token"
 	"testing"
-
-	"github.com/mrsekut/WritingAnInterpreterInGo/monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
-	input := `=+(){},;`
+	input := `let five = 5;
+			  let ten = 10;
+
+			  let add = fn(x, y) {
+				  x + y;
+			  };
+
+			  let result = add(five, ten);
+			 `
 
 	tests := []struct {
 		expectedType    token.TokenType
 		expectedLiteral string
 	}{
+		{token.LET, "let"},
+		{token.IDENT, "five"},
 		{token.ASSIGN, "="},
-		{token.PLUS, "+"},
+		{token.INT, "5"},
+		{token.SEMICOLON, ";"},
+
+		{token.LET, "let"},
+		{token.IDENT, "ten"},
+		{token.INT, "10"},
+		{token.ASSIGN, "="},
+		{token.SEMICOLON, ";"},
+
+		{token.LET, "let"},
+		{token.IDENT, "add"},
+		{token.ASSIGN, "="},
+		{token.FUNCTION, "fn"},
 		{token.LPAREN, "("},
+		{token.IDENT, "x"},
+		{token.COMMA, ","},
+		{token.IDENT, "y"},
 		{token.RPAREN, ")"},
 		{token.LBRACE, "{"},
-		{token.RBRACE, "}"},
-		{token.COMMA, ","},
+
+		{token.IDENT, "x"},
+		{token.PLUS, "+"},
+		{token.IDENT, "Y"},
 		{token.SEMICOLON, ";"},
+
+		{token.RBRACE, "}"},
+		{token.SEMICOLON, ";"},
+
+		{token.LET, "let"},
+		{token.IDENT, "result"},
+		{token.ASSIGN, "="},
+		{token.IDENT, "add"},
+		{token.LPAREN, "("},
+		{token.IDENT, "five"},
+		{token.SEMICOLON, ","},
+		{token.IDENT, "ten"},
+		{token.RPAREN, ")"},
+		{token.SEMICOLON, ";"},
+
 		{token.EOF, ""},
 	}
 
