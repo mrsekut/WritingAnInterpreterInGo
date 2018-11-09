@@ -1,8 +1,9 @@
 package lexer
 
 import (
-	"monkey/token"
 	"testing"
+
+	"github.com/mrsekut/WritingAnInterpreterInGo/monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
@@ -28,8 +29,8 @@ func TestNextToken(t *testing.T) {
 
 		{token.LET, "let"},
 		{token.IDENT, "ten"},
-		{token.INT, "10"},
 		{token.ASSIGN, "="},
+		{token.INT, "10"},
 		{token.SEMICOLON, ";"},
 
 		{token.LET, "let"},
@@ -45,7 +46,7 @@ func TestNextToken(t *testing.T) {
 
 		{token.IDENT, "x"},
 		{token.PLUS, "+"},
-		{token.IDENT, "Y"},
+		{token.IDENT, "y"},
 		{token.SEMICOLON, ";"},
 
 		{token.RBRACE, "}"},
@@ -57,7 +58,7 @@ func TestNextToken(t *testing.T) {
 		{token.IDENT, "add"},
 		{token.LPAREN, "("},
 		{token.IDENT, "five"},
-		{token.SEMICOLON, ","},
+		{token.COMMA, ","},
 		{token.IDENT, "ten"},
 		{token.RPAREN, ")"},
 		{token.SEMICOLON, ";"},
