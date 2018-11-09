@@ -2,7 +2,8 @@ package lexer
 
 import (
 	"testing"
-	"token/token"
+
+	"github.com/mrsekut/WritingAnInterpreterInGo/monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
@@ -18,7 +19,7 @@ func TestNextToken(t *testing.T) {
 		{token.RPAREN, ")"},
 		{token.LBRACE, "{"},
 		{token.RBRACE, "}"},
-		{toke.COMMA, ","},
+		{token.COMMA, ","},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
 	}
